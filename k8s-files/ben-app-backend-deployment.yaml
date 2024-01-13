@@ -1,0 +1,23 @@
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ben-app-backend
+  namespace: ben-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ben-app-backend
+  template:
+    metadata:
+      labels:
+        app: ben-app-backend
+    spec:
+      containers:
+      - name: ben-app-backend
+        image: docker.io/library/ben-app.backend:24.01.05.001
+        ports:
+        - containerPort: 4000
+      serviceAccountName: pod-creator-sa

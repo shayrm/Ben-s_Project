@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ben-app-frontend
+  namespace: ben-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ben-app-frontend
+  template:
+    metadata:
+      labels:
+        app: ben-app-frontend
+    spec:
+      containers:
+      - name: ben-app-frontend
+        image: docker.io/library/ben-app.frontend:24.01.05.001
+        ports:
+        - containerPort: 3000
+
+
